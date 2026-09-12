@@ -1,13 +1,29 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=320, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script>
-$(function(){return $(".btn").on("click",function(){var n=$(this).data("url");n=location.href.replace(/[^\/]*$/,"")+n;var t=n+"?_="+(new Date-0);n="itms-services://?action=download-manifest&url="+n,$.ajax(t).done(function(t){var e={};$(t).find("key").each(function(n,t){var a=$(t),r=a.next();r.children().length||(e[a.text()]=r.text())});var a=e.url;a=a&&a.replace(/^.*\//,""),confirm(e.title+"\n"+a+"\nをインストールしますか")&&(location.href=n)})}),!1});
+$(function(){return $(".install-card").on("click",function(){var n=$(this).data("url");n=location.href.replace(/[^\/]*$/,"")+n;var t=n+"?_="+(new Date-0);n="itms-services://?action=download-manifest&url="+n,$.ajax(t).done(function(t){var e={};$(t).find("key").each(function(n,t){var a=$(t),r=a.next();r.children().length||(e[a.text()]=r.text())});var a=e.url;a=a&&a.replace(/^.*\//,""),confirm(e.title+"\n"+a+"\nをインストールしますか")&&(location.href=n)})}),!1});
 </script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<style>
+.app-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.app-card h3 {
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+</style>
 <title>ダウンロード</title>
 </head>
 <body>
@@ -15,10 +31,21 @@ $(function(){return $(".btn").on("click",function(){var n=$(this).data("url");n=
 
 <p>&nbsp;</p>
 
-<p>
-<a class="btn btn-success btn-large btn-block" href="#" data-url="dl.plist">esign</a>
-<a class="btn btn-success btn-large btn-block" href="#" data-url="dl2.plist">ksign</a>
-</p>
+<div class="row">
+    <div class="col-xs-12 col-sm-4">
+        <div class="app-card">
+            <h3>esign</h3>
+            <a class="btn btn-success btn-block install-card" href="#" data-url="dl.plist">esign</a>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+        <div class="app-card">
+            <h3>ksign</h3>
+            <a class="btn btn-success btn-block install-card" href="#" data-url="ksigm.plist">ksign</a>
+        </div>
+    </div>
+    <!-- 4枚目以降を追加する場合はここに col-xs-12 col-sm-4 を追加 -->
+</div>
 
 </div>
 </body>
